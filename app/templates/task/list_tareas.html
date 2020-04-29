@@ -1,0 +1,51 @@
+{% extends 'layout.html' %}
+
+{% block containerBlockLayout %}
+
+  <div class="d-inline-block">
+    <br>
+    <h2>Listado de Tareas</h2>
+    <br>
+    <a href="{{ url_for('.new_task') }}">Nueva Tarea</a>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Título</th>
+        <th scope="col">Descripción</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for tarea in tasks %}
+      <tr>
+        <td>
+          <a href="{{ url_for('.get_task', task_id=tarea.id) }}">{{ tarea.title }}</a>
+        </td>
+        <td>{{ tarea.descripcion_corta }}</td>
+        <td>
+          <a href="{{ url_for('.editar_tarea', task_id=tarea.id) }}" class="btn btn-primary">Editar</a>
+          <a href="{{ url_for('.borrar_tarea', task_id=tarea.id) }}" class="btn btn-danger">Eliminar</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <nav>
+    <ul class="pagination">
+      {% if pagination.has_prev %}
+        <li class="page-item">
+          <a href="{{ url_for('.tareas', pagina=page-1) }}" class="page-link"> Anterior </a>
+        </li>
+      {% endif %}
+
+      {% if pagination.has_next %}
+        <li class="page-item">
+          <a href="{{ url_for('.tareas', pagina=page+1)}}" class="page-link"> Siguiente </a>
+        </li>
+      {% endif %}
+    </ul>
+  </nav>
+
+{% endblock %}

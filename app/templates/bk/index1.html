@@ -1,0 +1,37 @@
+{% extends	'base.html' %}
+{% block ContenidoBaseHTML %}
+    <h1 style="color:Blue;">Hola :	</h1><h2>{{ username }}</h2>
+	<p>
+		En el parrafo de la plantilla .html
+	</p>
+	
+	{% if is_premium %}
+		<p>
+			El Curso de {{ name_curso }} es Premium
+		</p>	
+	{% else %}
+		<p>
+			El Curso es Gratis.
+		</p>
+	{% endif %}
+	
+	<br>
+	{% if list_cursos %}
+		<p>
+			Este es el Listado de Cursos :
+			<ul>
+				{% for curso in list_cursos %}
+					<li> {{ curso }} </li>
+				{% endfor %}		
+			</ul>
+		</p>
+	{% endif %}
+	
+	<br>
+	<ul>
+	{% for val in [1,2,3,0,5,6,7,8,9] %}
+		<li> {% if loop.first %} Primero: {% endif %} {{ loop.index0 }} - {{ val }} </li>
+	{% endfor %}
+	</ul>
+
+{% endblock %}

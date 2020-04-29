@@ -1,0 +1,71 @@
+{% extends 'bootstrap/base.html' %}
+
+{% block title %}
+  {{ title }}
+{% endblock %}
+
+{% block navbar %}
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <div class="container">
+      <a class="navbar-brand" href="#"></a>
+      <div>
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item {% if link_activo == 'index' %} active {% endif %}">
+            <a class="nav-link" href="{{ url_for('.index') }}">Index</a>
+          </li>
+          {% if current_user.is_authenticated %}
+            <li class="nav-item {% if link_activo == 'tareas' %} active {% endif %}">
+              <a class="nav-link" href="{{ url_for('.tareas') }}">Tareas</a>
+            </li>
+            <li class="nav-item {% if link_activo == 'new_task' %} active {% endif %}">
+              <a class="nav-link" href="{{ url_for('.new_task') }}">Nueva Tarea</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('.logout') }}">Loguot</a>
+            </li>
+          {% else %}
+            <li class="nav-item {% if link_activo == 'login' %} active {% endif %}">
+              <a class="nav-link" href="{{ url_for('.login') }}">Login</a>
+            </li>
+            <li class="nav-item {% if link_activo == 'registro' %} active {% endif %}">
+              <a class="nav-link" href="{{ url_for('.registro') }}">Registro</a>
+            </li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </nav>
+{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <div class="row">
+
+      <div class="col-md-12 col-md-offset-1">
+        <!-- Manejo de Mensajes pasados por FLASH -->
+          {% with losmensajes = get_flashed_messages(with_categories=True) %}
+
+          {% if losmensajes %}
+
+              {% for category, mensaje in losmensajes %}
+                {% if category == 'error' %}
+                  <div class="alert alert-danger" role="alert">
+                      {{ mensaje }}
+                  </div>
+                {% else %}
+                  <div class="alert alert-success" role="alert">
+                      {{ mensaje }}
+                  </div>
+                {% endif %}
+              {% endfor %}
+
+          {% endif %}
+
+          {% endwith %}
+      </div>
+
+      {% block containerBlockLayout %}
+      {% endblock %}
+    </div>
+  </div>
+{% endblock %}

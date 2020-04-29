@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title> Hi Mundo - {{ title }} </title>
+    <link rel="shortcut icon" type="image/x-icon" href="{{ url_for('static' , filename='images/favicon.ico') }}" >
+	  <link rel="stylesheet" href="{{ url_for('static' , filename='css/style.css') }}" >
+    <script type="text/javascript" src="{{ url_for('static' , filename='js/main.js') }}"> </script>
+  </head>
+  <body>
+    <h1 style="color:Red;">Hola :	</h1><h2>{{ username }}</h2>
+	<p>
+		Link en Base.html
+		<li><a href="{{ url_for('index') }}" >Index</a></li>
+		<li><a href="{{ url_for('about') }}" >About</a></li>
+	</p>
+
+	{% block ContenidoBaseHTML %}
+	{% endblock %}
+
+	{% block ContenidoBaseFooter %}
+	<footer>
+		<p>Pie de pagina...</p>
+	</footer>
+	{% endblock %}
+
+	<img src="{{ url_for('static' , filename='images/dron.jpg' ) }}" alt="El Droni">
+
+  </body>
+</html>
