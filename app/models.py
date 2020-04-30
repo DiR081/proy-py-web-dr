@@ -24,6 +24,7 @@ class User(db.Model, UserMixin):
 
     @property
     def password(self):
+        # Permite Retornar la propiedad PASSWORD sin valores para llamados externos
         pass
 
     @password.setter

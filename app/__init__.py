@@ -29,8 +29,8 @@ mail = Mail()
 
 # Para vincular las paginas e Instancias
 from .views import page
-# vincular Y crear las Tablas de DB
-from .models import User
+# vincular Y crear las Tablas de DB (User y Task) de Modelos
+from .models import User, Task
 
 # Funcion que retorna la Instancia creada, que Arranca el servidor
 #  Se recive Obj de Configuraciones
