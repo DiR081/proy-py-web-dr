@@ -3,11 +3,6 @@ Desarrollo de Software		--		\		--	BackSlash
 
 Modelo - Vista - Controlaor
 
-
-MySQL - Credenciales
-	toorMySQL$2020
-
-
 Link
 
 https://codigofacilito.com/videos/urls
