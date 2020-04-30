@@ -25,4 +25,11 @@ if __name__ == '__main__':
 	manager = Manager(app)
 	# levantar utilidad Shell
 	manager.add_command('shell', Shell(make_context=mi_shell_context) )
+	# Comando Custom
+	@manager.command
+	def test():
+		import unittest
+		tests = unittest.TestLoader().discover('test')
+		unittest.TextTestRunner().run(tests)
+
 	manager.run()
