@@ -45,11 +45,21 @@ Inicia servidor mysql
 
 +++++++++++++++++++++++++++++++++++++++
 
+GitHub
+
+git remote add origin https://github.com/DiR081/proy-py-web-dr.git
+git remote -v
+git push -u origin master
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
 
 +++++++++++++++++++++++++++++++++++++++
 +++++++++++++++++++++++++++++++++++++++
 
-Paquetes Insalados
+Paquetes Instalados
 
 
 	pip install email_validator
