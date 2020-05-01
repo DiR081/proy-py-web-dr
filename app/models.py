@@ -70,6 +70,7 @@ class Task(db.Model):
     description = db.Column(db.Text())
     user_id = db.Column(db.Integer, db.ForeignKey('Usuarios.id'))
     create_at = db.Column(db.DateTime, default=tiempo_actual)
+    update_at = db.Column(db.DateTime)
 
     # Creamos una propiedad que devuelve una descripcion corta de la tarea
     @property

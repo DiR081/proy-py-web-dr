@@ -5,6 +5,10 @@ from app import db, User, Task
 
 # Importa clase que permite levantar el servidor desde una clase, e interprete de Consola
 from flask_script import Manager, Shell
+# Importamos SQLAlquemy para trabajar con el migrate
+from flask_sqlalchemy import SQLAlchemy
+# Importamos la libreria de Migración
+from flask_migrate import Migrate, MigrateCommand
 
 # Importa Diccionario que permite levantar  Configuraciones en el servidor
 from config import configDic
@@ -18,13 +22,17 @@ def mi_shell_context():
 	return dict(app=app, db=db, User=User, Task=Task)
 # Obtener la aplicacion + Se envia Obj de Config
 app = crear_app(Config_class)
+# Cremos la Instancia del Migrate
+migrate = Migrate(app, db)
 
 # Clasica Condicion de Inicio
 if __name__ == '__main__':
 	#
 	manager = Manager(app)
-	# levantar utilidad Shell
+	# Registramos un comando - utilidad Shell
 	manager.add_command('shell', Shell(make_context=mi_shell_context) )
+	# Registramos un comando - importar
+	manager.add_command('db', MigrateCommand)
 	# Comando Custom
 	@manager.command
 	def test():
