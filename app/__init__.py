@@ -40,7 +40,12 @@ def crear_app(Obj_Configuraciones):
 	#print ('Hola, Inicia el servidor')
 	mail.init_app(app)
 	csrf.init_app(app)
-	bootstrap.init_app(app)
+	# Condición para cargar o iniciar SOLO un entorno Web/APP o No, si estamos en TestCase
+	if not app.config.get('TEST', False):
+		bootstrap.init_app(app)
+	# Empujar el contexto de la APP
+	app.app_context().push()
+
 	login_manager.init_app(app)
 	login_manager.login_view = '.login'  # Redirecciona usuarios sin sesión
 	login_manager.login_message = LOGIN_REQUIRED

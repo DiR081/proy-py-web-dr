@@ -14,7 +14,15 @@ class DevelomentConfig(Config):
     MAIL_USERNAME = 'bk1.df.rodriguez@gmail.com'
     MAIL_PASSWORD = config('MAIL_PASSWORD') #MAIL_PASSWORD #OS
 
+# Definimos una nueva clase que hereda de Config
+class TestConfig(Config):
+    SQLALCHEMY_DATABASE_URI = 'mysql://root:@localhost/Proj_PythonWeb_Cfacil_Test' # Gestor Usuario Contrasena Ruta NombBaseDatos
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
+    TEST = True
+
+# Se define el Directorio con las configiguraciones existentes en el Proyecto
 configDic = {
     'development' : DevelomentConfig,
-    'default' : DevelomentConfig
+    'default' : DevelomentConfig,
+    'test' : TestConfig
 }

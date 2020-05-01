@@ -9,7 +9,7 @@ from flask_script import Manager, Shell
 # Importa Diccionario que permite levantar  Configuraciones en el servidor
 from config import configDic
 
-# Defino una Configuracion a usar del Diccionario
+# Defino una Instancia con la Configuracion a usar en el APP definido en el Diccionario
 Config_class = configDic['development']
 
 # Crear los parametros del shell
