@@ -3,6 +3,16 @@ Desarrollo de Software		--		\		--	BackSlash
 
 Modelo - Vista - Controlaor
 
+
+Migrate DB
+
+	1. Estado inicial del DB - python manager.py db init
+	2. Aplicar los Cambios
+	3. Crear los archivos de migración - python manager.py db
+	4. Aplicar los Cambios (Validar Migrate Bug - Eliminar el codigo no adecuado)  - python manager.py db upgrade
+	5. Si quiero volver deshacer - python manager.py db downgrade
+
+
 Link
 
 https://codigofacilito.com/videos/urls

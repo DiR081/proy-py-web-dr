@@ -31,13 +31,13 @@ if __name__ == '__main__':
 	manager = Manager(app)
 	# Registramos un comando - utilidad Shell
 	manager.add_command('shell', Shell(make_context=mi_shell_context) )
-	# Registramos un comando - importar
+	# Registramos un comando - importar DataBase
 	manager.add_command('db', MigrateCommand)
-	# Comando Custom
+	# Comando Custom - test
 	@manager.command
 	def test():
 		import unittest
 		tests = unittest.TestLoader().discover('test')
 		unittest.TextTestRunner().run(tests)
-
+	# Arranca la APP
 	manager.run()
